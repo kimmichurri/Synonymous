@@ -8,12 +8,24 @@
 <script>
 import Header from './components/Header.vue'
 import Card from './components/Card.vue'
+import { myKey } from '../utils/myKey'
 
 export default {
   name: 'app',
   components: {
     Header,
     Card
+  },
+  mounted: async function() {
+    this.getSyns()
+  },
+  methods: {
+    async getSyns() {
+    const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/umpire?key=${myKey}`
+    const response = await fetch(url)
+    const results = await response.json()
+    console.log(results)
+    }
   }
 }
 </script>
