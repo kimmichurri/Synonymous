@@ -33,7 +33,7 @@ export default {
     },
     captureSyns(results) {
       results.reduce((acc, result) => {
-        const words = result.meta.syns[0].forEach(word => {
+        result.meta.syns[0].forEach(word => {
           acc.push(word)
         })
         this.synonyms = acc
