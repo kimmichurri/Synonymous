@@ -16,14 +16,29 @@ export default {
     Header,
     Card
   },
+  data() {
+    return {
+      synonyms: []
+    }
+  },
   mounted: async function() {
-    this.getSyns()
+    this.getData()
   },
   methods: {
-    async getSyns() {
+    async getData() {
     const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/umpire?key=${myKey}`
     const response = await fetch(url)
     const results = await response.json()
+    this.captureSyns(results)
+    },
+    captureSyns(results) {
+      results.reduce((acc, result) => {
+        const words = result.meta.syns[0].forEach(word => {
+          acc.push(word)
+        })
+        this.synonyms = acc
+        return acc
+      }, [])
     }
   }
 }
