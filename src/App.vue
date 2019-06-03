@@ -1,9 +1,13 @@
 <template>
   <div id="app">
     <Header/>
+    <p>synonyms: </p>
+    <input v-model="currentSearchText" placeholder="enter a word">
+    <button v-on:click="this.getData">search</button>
     <Card
       v-if="synonyms.length" 
       :synonyms="synonyms"
+      :currentSearchText="currentSearchText"
     />
   </div>
 </template>
@@ -21,15 +25,13 @@ export default {
   },
   data() {
     return {
-      synonyms: []
+      synonyms: [],
+      currentSearchText: ''
     }
-  },
-  mounted: async function() {
-    this.getData()
   },
   methods: {
     async getData() {
-    const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/umpire?key=${myKey}`
+    const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${this.currentSearchText}?key=${myKey}`
     const response = await fetch(url)
     const results = await response.json()
     this.captureSyns(results)

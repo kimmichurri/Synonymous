@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Current synonyms</h2>
+    <h2>{{currentSearchText}}</h2>
     <ul>
       <li v-for="(synonym, index) in synonyms" :key="index">
         {{ synonym }}
@@ -12,7 +12,8 @@
 <script>
   export default {
     props: {
-      synonyms: Array
+      synonyms: Array,
+      currentSearchText: String
     }
   }
 </script>
