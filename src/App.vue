@@ -24,7 +24,6 @@ export default {
     const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/umpire?key=${myKey}`
     const response = await fetch(url)
     const results = await response.json()
-    console.log(results)
     }
   }
 }
