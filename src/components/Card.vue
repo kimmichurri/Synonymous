@@ -33,6 +33,10 @@
   margin: 1.5em;
 }
 
+.synonym-text:hover {
+  cursor: pointer;
+}
+
 .synonym-card {
   background-color: #FFF;
   padding: 30px;

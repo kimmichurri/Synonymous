@@ -87,4 +87,8 @@ input,
   margin: 12px;
 }
 
+.search-button:hover {
+  cursor: pointer;
+}
+
 </style>
