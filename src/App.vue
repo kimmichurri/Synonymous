@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <Header/>
-    <p>synonyms: </p>
-    <input v-model="currentSearchText" placeholder="enter a word">
-    <button v-on:click="this.getData">search</button>
+    <div class="user-input-container">
+        <p>synonyms: </p>
+        <input v-model="currentSearchText" placeholder="enter a word">
+        <button class="search-button" v-on:click="this.getData">search</button>
+    </div>
     <Card
       v-if="synonyms.length" 
       :synonyms="synonyms"
@@ -56,6 +58,33 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  box-sizing: border-box;
 }
+
+.user-input-container {
+  background-color: #EEEEEE;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+input {
+  width: 400px;
+  margin: 10px;
+}
+
+input,
+.search-button {
+  height: 30px;
+}
+
+.search-button {
+  margin: 12px;
+}
+
 </style>
