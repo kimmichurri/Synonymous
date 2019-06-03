@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Header/>
-    <Card />
+    <Card
+      v-if="synonyms.length" 
+      :synonyms="synonyms"
+    />
   </div>
 </template>
 
