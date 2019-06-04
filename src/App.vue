@@ -6,7 +6,7 @@
         <input v-model="currentSearchText" placeholder="enter a word">
         <button 
           class="search-button" 
-          v-on:click="this.getData"
+          v-on:click="this.setUrl"
           :disabled="currentSearchText.length === 0"
           >
           search
@@ -16,6 +16,7 @@
       v-if="synonyms.length" 
       :synonyms="synonyms"
       :currentSearchText="currentSearchText"
+      v-on:send-text="handleText"
     />
     <h2
       class="user-prompt"
@@ -51,15 +52,18 @@ export default {
     }
   },
   methods: {
-    async getData() {
+    setUrl() {
     const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${this.currentSearchText}?key=${myKey}`
+    this.getData(url)
+    },
+    async getData(url) {
     const response = await fetch(url)
     const results = await response.json()
     if(typeof results[0] === 'object') {
       this.captureSyns(results)
     } else {
       this.synonyms = []
-      this.error = 'Sorry, the word does not exist in our database'
+      this.error = 'Sorry, the word you entered does not exist in our database'
     }
     },
     captureSyns(results) {
@@ -71,6 +75,11 @@ export default {
         this.synonyms = acc
         return acc
       }, [])
+    },
+    handleText(value) {
+      this.currentSearchText = value
+      const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${value}?key=${myKey}`
+      this.getData(url)
     }
   }
 }
