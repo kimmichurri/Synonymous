@@ -140,7 +140,7 @@ input,
 
 .user-input-container-wrapper {
   background-color: #f5a622ff;
-  padding: 10px 40px;
+  padding: 20px 40px;
 }
 
 </style>
