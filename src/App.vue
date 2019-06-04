@@ -3,15 +3,15 @@
     <Header />
     <div class="user-input-container-wrapper">
       <div class="user-input-container">
-          <p class="input-label">synonyms: </p>
-          <input v-model="currentSearchText" placeholder="enter a word">
-          <button 
-            class="search-button" 
-            v-on:click="this.setUrl"
-            :disabled="currentSearchText.length === 0"
-            >
-            search
-          </button>
+        <p class="input-label">synonyms: </p>
+        <input v-model="currentSearchText" placeholder="enter a word">
+        <button 
+          class="search-button" 
+          v-on:click="this.setUrl"
+          :disabled="currentSearchText.length === 0"
+          >
+          search
+        </button>
       </div>
     </div>
     <Card
@@ -140,7 +140,6 @@ input,
 .search-button:hover {
   cursor: pointer;
   box-shadow: 0px 2px 6px #dcdcdc;
-
 }
 
 .search-button:disabled {
