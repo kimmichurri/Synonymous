@@ -43,6 +43,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   background-color: #EEE;
+  box-shadow: 2px 1px 2px #dcdcdc;
 }
 
 .synonym-text {
@@ -51,12 +52,14 @@
 }
 
 .synonym-text:hover {
+  color: #595959;
   cursor: pointer;
+  font-weight: lighter;
 }
 
 .synonym-card {
   background-color: #FFF;
-  padding: 30px;
+  padding: 0px 30px;
 }
 
 .searched-word {
@@ -64,6 +67,7 @@
   font-weight: bold;
   font-size: 2.75em;
   color: #595959;
+  margin-bottom: 0px;
 }
 
 .synonyms-for-tag {
