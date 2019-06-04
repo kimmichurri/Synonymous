@@ -1,6 +1,6 @@
 <template>
   <div class="header-background">
-    <p class="site-name">Synonymous.com</p>
+    <p class="site-name">Synonymous</p>
   </div>
 </template>
 
@@ -17,6 +17,8 @@
   font-size: 1.25em;
   font-style: italic;
   font-weight: bold;
+  margin: 0px;
+  padding: 25px 30px 0px;
 }
 
 </style>

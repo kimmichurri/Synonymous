@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <Header/>
-    <div class="user-input-container">
-        <p>synonyms: </p>
+    <Header />
+    <div class="user-input-container-wrapper">
+      <div class="user-input-container">
+        <p class="input-label">synonyms: </p>
         <input v-model="currentSearchText" placeholder="enter a word">
         <button 
           class="search-button" 
@@ -11,6 +12,7 @@
           >
           search
         </button>
+      </div>
     </div>
     <Card
       v-if="synonyms.length" 
@@ -20,7 +22,7 @@
     />
     <h2
       class="user-prompt"
-      v-if="currentSearchText.length === 0 "
+      v-if="currentSearchText.length === 0"
     >
       Please enter a word in the search
     </h2>
@@ -88,6 +90,7 @@ export default {
 </script>
 
 <style>
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -110,8 +113,10 @@ body {
 }
 
 input {
-  width: 400px;
+  width: 60%;
   margin: 10px;
+  border-radius: 1px;
+  padding-left: 1%;
 }
 
 input,
@@ -119,12 +124,27 @@ input,
   height: 30px;
 }
 
+.input-label,
+.search-button {
+  color: #595959;
+  font-weight: bold;
+}
+
 .search-button {
   margin: 12px;
+  border-radius: 4px;
+  background-color: #fbfbfb;
+  width: 100px;
 }
 
 .search-button:hover {
   cursor: pointer;
+  box-shadow: 0px 2px 6px #dcdcdc;
+}
+
+.search-button:disabled {
+  color: #d6d6d6;
+  background-color: #f1f1f1;
 }
 
 .user-prompt,
@@ -132,6 +152,27 @@ input,
   font-weight: bold;
   font-size: 1.25em;
   color: #595959;
+  margin: 20px 20%;
+}
+
+.user-input-container-wrapper {
+  background-color: #f5a622ff;
+  padding: 10px 40px 20px;
+}
+
+@media screen and (max-width: 750px) {
+  .user-input-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-button {
+    width: 61%;
+    margin: 10px 12px 20px;
+  }
+  .input-label {
+    align-self: flex-start;
+    margin-left: 20%;
+  }
 }
 
 </style>
