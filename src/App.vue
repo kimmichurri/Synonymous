@@ -4,12 +4,16 @@
     <div class="user-input-container-wrapper">
       <div class="user-input-container">
         <p class="input-label">synonyms: </p>
-        <input v-model="currentSearchText" placeholder="enter a word">
+        <input
+          v-model="currentSearchText"
+          placeholder="enter a word"
+          v-on:keyup.enter="setUrl"
+        >
         <button 
           class="search-button" 
-          v-on:click="this.setUrl"
+          v-on:click="setUrl"
           :disabled="currentSearchText.length === 0"
-          >
+        >
           search
         </button>
       </div>
