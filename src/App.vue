@@ -68,9 +68,11 @@ export default {
     },
     captureSyns(results) {
       results.reduce((acc, result) => {
-        result.meta.syns[0].forEach(word => {
-          acc.push(word)
-        })
+        if(result.meta.id === this.currentSearchText) {
+          result.meta.syns[0].forEach(word => {
+            acc.push(word)
+          })
+        }
         this.error = ''
         this.synonyms = acc
         return acc
