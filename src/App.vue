@@ -55,18 +55,25 @@ export default {
   },
   methods: {
     setUrl() {
-    const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${this.currentSearchText}?key=${myKey}`
-    this.getData(url)
+      const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${this.currentSearchText}?key=${myKey}`
+      this.getData(url)
     },
     async getData(url) {
-    const response = await fetch(url)
-    const results = await response.json()
-    if(typeof results[0] === 'object') {
-      this.captureSyns(results)
-    } else {
-      this.synonyms = []
-      this.error = 'Sorry, the word you entered does not exist in our database'
-    }
+      try {
+        const response = await fetch(url)
+        if(!response.ok) {
+          throw Error (response.statusText)
+        }
+        const results = await response.json()
+        if(typeof results[0] === 'object') {
+          this.captureSyns(results)
+        } else {
+          this.synonyms = []
+          this.error = 'Sorry, the word you entered does not exist in our database'
+        }
+      } catch(error) {
+        this.error = 'Sorry, there was a problem retrieving the data'
+      }
     },
     captureSyns(results) {
       results.reduce((acc, result) => {
