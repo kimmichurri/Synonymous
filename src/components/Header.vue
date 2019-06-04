@@ -17,6 +17,8 @@
   font-size: 1.25em;
   font-style: italic;
   font-weight: bold;
+  margin: 0px;
+  padding: 10px 40px;
 }
 
 </style>

@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <Header/>
-    <div class="user-input-container">
-        <p>synonyms: </p>
-        <input v-model="currentSearchText" placeholder="enter a word">
-        <button 
-          class="search-button" 
-          v-on:click="this.setUrl"
-          :disabled="currentSearchText.length === 0"
-          >
-          search
-        </button>
+    <Header
+    />
+    <div class="user-input-container-wrapper">
+      <div class="user-input-container">
+          <p>synonyms: </p>
+          <input v-model="currentSearchText" placeholder="enter a word">
+          <button 
+            class="search-button" 
+            v-on:click="this.setUrl"
+            :disabled="currentSearchText.length === 0"
+            >
+            search
+          </button>
+      </div>
     </div>
     <Card
       v-if="synonyms.length" 
@@ -88,6 +91,7 @@ export default {
 </script>
 
 <style>
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -132,6 +136,11 @@ input,
   font-weight: bold;
   font-size: 1.25em;
   color: #595959;
+}
+
+.user-input-container-wrapper {
+  background-color: #f5a622ff;
+  padding: 10px 40px;
 }
 
 </style>
