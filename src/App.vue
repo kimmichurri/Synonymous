@@ -124,6 +124,8 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 75%;
+  margin: auto;
 }
 
 body {
@@ -176,7 +178,7 @@ input,
 
 .user-input-container-wrapper {
   background-color: #f5a622ff;
-  padding: 10px 40px 20px;
+  padding-bottom: 30px;
 }
 
 @media screen and (max-width: 750px) {

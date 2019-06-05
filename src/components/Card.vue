@@ -59,7 +59,8 @@
 
 .synonym-card {
   background-color: #FFF;
-  padding: 0px 30px;
+  width: 75%;
+  margin: auto;
 }
 
 .searched-word {

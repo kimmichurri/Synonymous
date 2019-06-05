@@ -13,6 +13,7 @@
   padding-left: 10px;
   display: flex;
   justify-content: space-between;
+  padding-top: 2%;
 }
 
 .site-name {
@@ -20,12 +21,12 @@
   font-size: 1.25em;
   font-style: italic;
   font-weight: bold;
-  margin: 0px;
-  padding: 25px 30px 0px;
+  margin-left: 12%;
 }
 
 .book-logo {
-  margin: 10px 4% 0px 0px;
+  margin-right: 12%;
+  padding: 10px;
 }
 
 </style>
