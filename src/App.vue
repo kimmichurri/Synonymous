@@ -4,18 +4,22 @@
     <div class="user-input-container-wrapper">
       <div class="user-input-container">
         <p class="input-label">synonyms: </p>
-        <input v-model="currentSearchText" placeholder="enter a word">
+        <input
+          v-model="currentSearchText"
+          placeholder="enter a word"
+          v-on:keyup.enter="setUrl"
+        >
         <button 
           class="search-button" 
-          v-on:click="this.setUrl"
+          v-on:click="setUrl"
           :disabled="currentSearchText.length === 0"
-          >
+        >
           search
         </button>
       </div>
     </div>
     <Card
-      v-if="synonyms.length" 
+      v-if="synonyms.length && !loading"
       :synonyms="synonyms"
       :currentSearchText="currentSearchText"
       v-on:send-text="handleText"
@@ -32,6 +36,10 @@
     >
       {{ error }}
     </h2>
+    <img
+      v-if="loading"
+      src="./assets/spinner.gif"
+    >
   </div>
 </template>
 
@@ -50,23 +58,34 @@ export default {
     return {
       synonyms: [],
       currentSearchText: '',
-      error: ''
+      error: '',
+      loading: false
     }
   },
   methods: {
     setUrl() {
-    const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${this.currentSearchText}?key=${myKey}`
-    this.getData(url)
+      const url = `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${this.currentSearchText}?key=${myKey}`
+      this.getData(url)
     },
     async getData(url) {
-    const response = await fetch(url)
-    const results = await response.json()
-    if(typeof results[0] === 'object') {
-      this.captureSyns(results)
-    } else {
-      this.synonyms = []
-      this.error = 'Sorry, the word you entered does not exist in our database'
-    }
+      try {
+        this.loading = true
+        const response = await fetch(url)
+        if(!response.ok) {
+          throw Error (response.statusText)
+        }
+        const results = await response.json()
+        this.loading = false
+        if(typeof results[0] === 'object') {
+          this.captureSyns(results)
+        } else {
+          this.loading = false
+          this.synonyms = []
+          this.error = 'Sorry, the word you entered does not exist in our database'
+        }
+      } catch(error) {
+        this.error = 'Sorry, there was a problem retrieving the data'
+      }
     },
     captureSyns(results) {
       results.reduce((acc, result) => {
@@ -105,6 +124,8 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 75%;
+  margin: auto;
 }
 
 body {
@@ -157,7 +178,7 @@ input,
 
 .user-input-container-wrapper {
   background-color: #f5a622ff;
-  padding: 10px 40px 20px;
+  padding-bottom: 30px;
 }
 
 @media screen and (max-width: 750px) {
