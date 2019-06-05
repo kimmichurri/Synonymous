@@ -19,7 +19,7 @@
       </div>
     </div>
     <Card
-      v-if="synonyms.length" 
+      v-if="synonyms.length && !loading"
       :synonyms="synonyms"
       :currentSearchText="currentSearchText"
       v-on:send-text="handleText"
@@ -36,6 +36,10 @@
     >
       {{ error }}
     </h2>
+    <img
+      v-if="loading"
+      src="./assets/spinner.gif"
+    >
   </div>
 </template>
 
@@ -54,7 +58,8 @@ export default {
     return {
       synonyms: [],
       currentSearchText: '',
-      error: ''
+      error: '',
+      loading: false
     }
   },
   methods: {
@@ -64,14 +69,17 @@ export default {
     },
     async getData(url) {
       try {
+        this.loading = true
         const response = await fetch(url)
         if(!response.ok) {
           throw Error (response.statusText)
         }
         const results = await response.json()
+        this.loading = false
         if(typeof results[0] === 'object') {
           this.captureSyns(results)
         } else {
+          this.loading = false
           this.synonyms = []
           this.error = 'Sorry, the word you entered does not exist in our database'
         }
