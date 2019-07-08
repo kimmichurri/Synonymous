@@ -5,6 +5,7 @@
       <div class="user-input-container">
         <p class="input-label">synonyms: </p>
         <input
+          class="synonym-input"
           v-model="currentSearchText"
           placeholder="enter a word"
           v-on:keyup.enter="setUrl"
@@ -166,6 +167,11 @@ input,
 .search-button:disabled {
   color: #d6d6d6;
   background-color: #f1f1f1;
+}
+
+.synonym-input:focus,
+.search-button:focus {
+  outline: 2px solid #fad290;
 }
 
 .user-prompt,
