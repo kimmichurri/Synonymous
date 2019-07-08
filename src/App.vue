@@ -89,7 +89,7 @@ export default {
     },
     captureSyns(results) {
       results.reduce((acc, result) => {
-        if(result.meta.id === this.currentSearchText) {
+        if(result.meta.id === this.currentSearchText.toLowerCase()) {
           result.meta.syns[0].forEach(word => {
             acc.push(word)
           })
