@@ -171,7 +171,7 @@ input,
 
 .synonym-input:focus,
 .search-button:focus {
-  outline: 2px solid #fad290;
+  outline: 2px solid #999999;
 }
 
 .user-prompt,
