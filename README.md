@@ -1,6 +1,6 @@
 # synonymous
  #### view at: http://synonymous.wadken.com/
- [Find me on LinkedIn](https://www.linkedin.com/in/kimberly-achkio-myers-85107a2b/)
+ [Find me on LinkedIn](https://www.linkedin.com/in/kim-achkio-myers-85107a2b/)
 
 ### Project setup
 
