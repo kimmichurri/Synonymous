@@ -14,6 +14,8 @@ Import the secure API key (myKey) into App.vue
 
 Run `npm run dev` and view the application at `http://localhost:8080/`
 
+Run `./deploy/deploy.sh` to deploy to production
+
 ### Project Background
 
 I created this basic application as an introduction to Vue.js. It is designed to have the basic functionality of other thesaurus applications where a user can enter a term to search for synonyms and can also discover new synoyms by clicking on any of the displayed words. This project was assigned as a way to take on the challenge of learning a new technology in just a few days. Click [here](http://frontend.turing.io/projects/final-countdown.html) to see the project description.
