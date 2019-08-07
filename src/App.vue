@@ -38,6 +38,7 @@
       {{ error }}
     </h2>
     <img
+      class="loading-img"
       v-if="loading"
       src="./assets/spinner.gif"
     >
@@ -199,6 +200,15 @@ input,
   .input-label {
     align-self: flex-start;
     margin-left: 20%;
+  }
+  .loading-img {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 440) {
+  .loading-img {
+    width: 200px;
   }
 }
 
